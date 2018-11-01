@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="translucent-form-overlay">
+  <form  action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    <h3 class="box-title">Login</h3>
+    {% if request.GET.next %}
+      <input type="hidden" name="next" value="{{request.GET.next}}" />
+    {% endif %}
+    <div class="row columns">
+     {{form}}
+     <input type="submit" class="green-button button expanded search-button" value="Login"/>
+    </div>
+
+    
+      
+ </form>
+</div>
+
+
+
+{% endblock %}
+

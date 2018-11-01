@@ -1,0 +1,17 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="translucent-form-overlay">
+  <form  action="{% url 'articles:create' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3 class="box-title">Create an Awesome New Article</h3>
+    <div class="row columns">
+      {{form}}
+      <input type="submit" class="green-button button expanded search-button" value="Create"/>
+    </div>   
+  </form>
+</div>
+  
+<script src="/static/slugify.js"></script>
+{% endblock %}

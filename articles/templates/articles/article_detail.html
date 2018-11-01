@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="medium-6 columns">
+       <img class="thumbnail" src="{{article.thumb.url}}">
+    </div>
+    <div class="medium-6 large-5 columns">
+      <h3>{{article.title}}</h3>
+      <p>{{article.body}}</p>
+      <p>{{article.date}}</p>
+    </div>
+</div>
+
+{% endblock %}

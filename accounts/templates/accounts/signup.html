@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="translucent-form-overlay">
+    <form  action="/accounts/signup/" method="post">
+      {% csrf_token %}
+      <h3 class="box-title">Signup</h3>
+      <div class="row columns">
+       {{form}}
+       <input type="submit" class="green-button button expanded search-button" value="Signup"/>
+      </div>   
+   </form>
+  </div>
+  
+{% endblock %}

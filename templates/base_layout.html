@@ -1,0 +1,60 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Blog</title>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+  </head>
+  <body>
+    	<header>
+          <div class="top-bar">
+            <div class="row">
+              <div class="top-bar-left">
+                <ul class="menu">
+                  <li class="logo"><a href="{% url 'home' %}">DjangoBlog</a></li>
+                  <li class="menu-item"><a href="{% url 'home' %}">Home</a></li>
+                  <li class="menu-item"><a href="{% url 'about' %}">About</a></li>
+                </ul>
+              </div>
+              <div class="top-bar-right">
+                <ul class="menu">
+                  {% if user.is_authenticated %}
+                    <li class="menu-item"><a href="{% url 'articles:create' %}">New Article</a></li>
+                    <li class="menu-item">
+                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit" class="logout-button">Logout</button>
+                        </form>
+                    </li>
+                  {% else %}
+                    <li class="menu-item"><a href="{% url 'accounts:login' %}">Login</a></li>
+                    <li class="menu-item"><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>	
+          </div>
+        </header>
+        <br>
+
+    <div class="wrapper">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <footer>
+				<div class="row expanded callout secondary">
+						
+						<div class="medium-6 columns">
+							<ul class="menu align-right">
+									<li class="menu-text">Copyright © 2018 Fatma Aşık</li>
+							</ul>
+						</div>
+				</div>
+			</footer>
+  </body>
+</html>
